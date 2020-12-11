@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DBackup.Service")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Envanter Yönetim Sistemi Uygulaması")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Çankırı İl Sağlık Müdürlüğü")]
 [assembly: AssemblyProduct("DBackup.Service")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]

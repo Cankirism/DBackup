@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DBackup.Bussiness;
+﻿using System.Text;
 using DBackup.Bussiness.Abstract;
 using DBackup.Bussiness.Concrete;
 using DBackup.Service.Concrete;
@@ -15,7 +10,6 @@ namespace DBackup
     {
         static void Main(string[] args)
         {
-
             IFileCopier fileCopier = new FileCopyManager();            
             var dataFileCopyResult = fileCopier.CopyFile();
             var logFileCopyResult = fileCopier.CopyLogFile();
@@ -26,8 +20,6 @@ namespace DBackup
 
             IEMailService mailService = new EmailService();
             mailService.SendReport(sb.ToString());
-          
-
         }
     }
 }
