@@ -1,38 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DBackup.Bussiness.Model;
-using System.Configuration;
 using System.IO;
-
+using DBackup.Bussiness.Model;
 
 namespace DBackup.Bussiness.Concrete
 {
     public class FileCreator
     {
-
-        // Data Log File Extension 
-
+        // Data log file extension 
         static string dataFileExt = System.Configuration.ConfigurationManager.AppSettings["DataFileExt"];
 
         // Log File Extension 
-
         static string logFileExt = System.Configuration.ConfigurationManager.AppSettings["LogFileExt"];
 
         public static SourceFile SetSourceFile()
         {
             // Log file datetime settings
             var year = DateTime.Now.Year.ToString();
-            var month = DateTime.Now.Month < 10 ? $"0{DateTime.Now.Month.ToString()}" : DateTime.Now.Month.ToString();
-            var day = DateTime.Now.Day < 10 ? $"0{DateTime.Now.Day.ToString()}" : DateTime.Now.Day.ToString();
+            var month = DateTime.Now.Month < 10 ? $"0{DateTime.Now.Month}" : DateTime.Now.Month.ToString();
+            var day = DateTime.Now.Day < 10 ? $"0{DateTime.Now.Day}" : DateTime.Now.Day.ToString();
             var hour = System.Configuration.ConfigurationManager.AppSettings["HourFormat"];
 
-            // log file prefix
+            // Log file prefix
             var prefix = System.Configuration.ConfigurationManager.AppSettings["Prefix"];
 
-            // Source File Drive
+            // Source file drive
             var sourceDrive = System.Configuration.ConfigurationManager.AppSettings["SourceDrive"];
 
             var sourceFile = $"{prefix}-{year}-{month}-{day}-{hour}";
@@ -41,12 +32,11 @@ namespace DBackup.Bussiness.Concrete
             {
                 DataSourceFile = Path.Combine(sourceDrive, $"{sourceFile}.{dataFileExt}"),
                 LogSourceFile = Path.Combine(sourceDrive, $"{sourceFile}.{logFileExt}")
-
             };
 
             return file;
-
         }
+
         public static TargetFile CreateTargetFile(string sourceFile)
         {
             FileInfo file = new FileInfo(sourceFile);
@@ -66,9 +56,10 @@ namespace DBackup.Bussiness.Concrete
             {
                 Directory.CreateDirectory(targetPath);
             }
-
             else
+            {
                 Console.WriteLine($"{targetPath} dizininde zaten mevcut. Kaynak dosya değişmemiş olabilir ");
+            }
 
             TargetFile targetFile = new TargetFile
             {
@@ -78,7 +69,5 @@ namespace DBackup.Bussiness.Concrete
 
             return targetFile;
         }
-
-
     }
 }

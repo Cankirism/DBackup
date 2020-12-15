@@ -1,17 +1,12 @@
-﻿using DBackup.Bussiness.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.IO;
+using DBackup.Bussiness.Abstract;
 using DBackup.Bussiness.Model;
 
 namespace DBackup.Bussiness.Concrete
 {
     public class FileCopyManager : IFileCopier
     {
-
         SourceFile _sourceFile;
         TargetFile _targetFile;
         string message;
@@ -21,6 +16,7 @@ namespace DBackup.Bussiness.Concrete
             _targetFile = FileCreator.CreateTargetFile(_sourceFile.DataSourceFile);
             message = string.Empty;
         }
+
         public string CopyFile()
         {
             try
@@ -35,6 +31,7 @@ namespace DBackup.Bussiness.Concrete
 
             return message;
         }
+
         public string CopyLogFile()
         {
             try
